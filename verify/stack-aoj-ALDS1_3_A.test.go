@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"strconv"
+	"strings"
 
 	"github.com/today2098/go-algorithm/algorithm"
 )
@@ -19,26 +21,24 @@ func main() {
 	sc.Split(bufio.ScanLines)
 
 	sc.Scan()
-	query := []rune(sc.Text())
+	query := strings.Split(sc.Text(), " ")
 
-	len := len(query)
 	st := algorithm.NewStack[int]()
-	for i := 0; i < len; i += 2 {
-		c := query[i]
-		if c == '+' {
-			tmp := st.Pop() + st.Pop()
-			st.Push(tmp)
-		} else if c == '-' {
-			tmp := -st.Pop() + st.Pop()
-			st.Push(tmp)
-		} else if c == '*' {
-			tmp := st.Pop() * st.Pop()
-			st.Push(tmp)
-		} else {
-			st.Push(int(c - '0'))
+	for _, elem := range query {
+		var tmp int
+		switch elem {
+		case "+":
+			tmp = st.Pop() + st.Pop()
+		case "-":
+			tmp = -st.Pop() + st.Pop()
+		case "*":
+			tmp = st.Pop() * st.Pop()
+		default:
+			tmp, _ = strconv.Atoi(elem)
 		}
+		st.Push(tmp)
 	}
 
-	ans := st.Pop()
+	ans := st.Top()
 	fmt.Println(ans)
 }

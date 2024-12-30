@@ -10,7 +10,7 @@ type Stack[T any] struct {
 // NewStack returns an initialized Stack.
 func NewStack[T any]() *Stack[T] {
 	return &Stack[T]{
-		Data: make([]T, 0),
+		Data: []T{},
 	}
 }
 

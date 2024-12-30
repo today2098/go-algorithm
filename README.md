@@ -17,6 +17,7 @@ go get -u github.com/today2098/go-algorithm
 |Name|Summary|Doucument|
 |---|---|---|
 |[Stack](./algorithm/stack.go)|Simple stack (LIFO) data structure.|[docs/stack.md](./docs/stack.md)|
+|[Queue](./algorithm/queue.go)|Simple queue (FIFO) data structure.|[docs/queue.md](./docs/queue.md)|
 
 
 ### Utilities

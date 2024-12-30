@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
 
       - name: Install dependencies
         run: python3 -m pip install -U online-judge-verify-helper
 
       # required only if you want to verify Go code
       - name: Install dependencies (Go)
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v4
         with:
-          go-version: '1.20.6'
+          go-version: '1.22.6'
 
       - name: Run tests
         env:

@@ -17,3 +17,10 @@ go get -u github.com/today2098/go-algorithm
 |Name|Summary|Doucument|
 |---|---|---|
 |[Stack](./algorithm/stack.go)|Simple stack (LIFO) data structure.|[docs/stack.md](./docs/stack.md)|
+
+
+### Utilities
+
+|Name|Summary|Doucument|
+|---|---|---|
+|[IO](./utils/io.go)|A helper about IO.|-|

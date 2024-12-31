@@ -20,10 +20,11 @@ go get -u github.com/today2098/go-algorithm
 
 ### Data structure
 
-| Name                          | Summary                                     | Doucument                   |
-| ----------------------------- | ------------------------------------------- | --------------------------- |
-| [Stack](./algorithm/stack.go) | A data structure about simple stack (LIFO). | [stack.md](./docs/stack.md) |
-| [Queue](./algorithm/queue.go) | A data structure about simple queue (FIFO). | [queue.md](./docs/queue.md) |
+| Name                                    | Summary                                     | Doucument                             |
+| --------------------------------------- | ------------------------------------------- | ------------------------------------- |
+| [Stack](./algorithm/stack.go)           | A data structure about simple stack (LIFO). | [stack.md](./docs/stack.md)           |
+| [Queue](./algorithm/queue.go)           | A data structure about simple queue (FIFO). | [queue.md](./docs/queue.md)           |
+| [BinaryHeap](./algorithm/binaryheap.go) | A data structure about priority queue.      | [binaryheap.md](./docs/binaryheap.md) |
 
 
 ### Utilities

@@ -48,7 +48,7 @@ func BenchmarkQueue(b *testing.B) {
 		que := NewQueue[int]()
 
 		for i := 0; i < loop; i++ {
-			que.Push(1)
+			que.Push(rand.Intn(1e9))
 		}
 
 		for i := 0; i < loop; i++ {

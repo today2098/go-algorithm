@@ -2,7 +2,7 @@
 
 package algorithm
 
-// Stack represents a LIFO data structure.
+// Stack represents LIFO data structure.
 type Stack[T any] struct {
 	Data []T
 }

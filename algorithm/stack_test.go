@@ -48,7 +48,7 @@ func BenchmarkStack(b *testing.B) {
 		st := NewStack[int]()
 
 		for i := 0; i < loop; i++ {
-			st.Push(1)
+			st.Push(rand.Intn(1e9))
 		}
 
 		for i := 0; i < loop; i++ {

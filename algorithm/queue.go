@@ -2,7 +2,7 @@
 
 package algorithm
 
-// Stack represents a FIFO data structure.
+// Stack represents FIFO data structure.
 type Queue[T any] struct {
 	Data []T
 }

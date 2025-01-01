@@ -39,7 +39,7 @@ func (h *BinaryHeap[T]) Size() int {
 // Top returns the top element of the priority-queue.
 func (h *BinaryHeap[T]) Top() T {
 	if h.Empty() {
-		panic("heap is empty")
+		panic("BinaryHeap: empty")
 	}
 	return h.tree[1]
 }
@@ -53,7 +53,7 @@ func (h *BinaryHeap[T]) Push(x T) {
 // Pop removes and returns the top element of the priority-queue.
 func (h *BinaryHeap[T]) Pop() T {
 	if h.Empty() {
-		panic("heap is empty")
+		panic("BinaryHeap: empty")
 	}
 	res := h.tree[1]
 	h.tree[1] = h.tree[h.Size()]

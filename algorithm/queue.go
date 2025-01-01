@@ -27,7 +27,7 @@ func (q *Queue[T]) Size() int {
 // Top returns the top element of the queue.
 func (q *Queue[T]) Front() T {
 	if q.Empty() {
-		panic("queue is empty")
+		panic("Queue: empty")
 	}
 	return q.Data[0]
 }
@@ -40,7 +40,7 @@ func (q *Queue[T]) Push(x T) {
 // Pop removes and returns the top element of the queue.
 func (q *Queue[T]) Pop() T {
 	if q.Empty() {
-		panic("queue is empty")
+		panic("Queue: empty")
 	}
 	res := q.Data[0]
 	q.Data = q.Data[1:]

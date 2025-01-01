@@ -27,7 +27,7 @@ func (s *Stack[T]) Size() int {
 // Top returns the top element of the stack.
 func (s *Stack[T]) Top() T {
 	if s.Empty() {
-		panic("stack is empty")
+		panic("Stack: empty")
 	}
 	return s.Data[len(s.Data)-1]
 }
@@ -40,7 +40,7 @@ func (s *Stack[T]) Push(x T) {
 // Pop removes and returns the top element of the stack.
 func (s *Stack[T]) Pop() T {
 	if s.Empty() {
-		panic("stack is empty")
+		panic("Stack: empty")
 	}
 	res := s.Data[len(s.Data)-1]
 	s.Data = s.Data[:len(s.Data)-1]

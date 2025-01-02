@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/today2098/go-algorithm/compare/v0.0.1...HEAD)
+## [Unreleased](https://github.com/today2098/go-algorithm/compare/v0.0.2...HEAD)
+
+## [v0.0.2](https://github.com/today2098/go-algorithm/compare/v0.0.1...v0.0.2) (2025/01/02)
 
 - Create a new structure, `BinaryHeap` about priority queue [#5](https://github.com/today2098/go-algorithm/pull/5)
 - Create a new structure, `UnionFind` about disjoint-set data structure [#6](https://github.com/today2098/go-algorithm/pull/6)

@@ -42,6 +42,16 @@ func (dq *Deque[T]) Back() T {
 	return dq.back[len(dq.back)-1]
 }
 
+func (dq *Deque[T]) At(i int) T {
+	if !dq.isValidIdx(i) {
+		panic("Deque: index out of range")
+	}
+	if i < len(dq.front) {
+		return dq.front[len(dq.front)-1-i]
+	}
+	return dq.back[i-len(dq.front)]
+}
+
 func (dq *Deque[T]) PushFront(x T) {
 	dq.front = append(dq.front, x)
 }
@@ -76,4 +86,8 @@ func (dq *Deque[T]) PopBack() T {
 	res := dq.back[len(dq.back)-1]
 	dq.back = dq.back[:len(dq.back)-1]
 	return res
+}
+
+func (dq *Deque[T]) isValidIdx(i int) bool {
+	return 0 <= i && i < dq.Size()
 }

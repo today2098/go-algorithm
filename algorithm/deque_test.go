@@ -18,7 +18,22 @@ func TestDeque(t *testing.T) {
 	}
 
 	dque := NewDeque[int]()
-	assert.True(t, dque.Empty())
+
+	require.True(t, dque.Empty())
+
+	tmp := rand.Intn(1e9)
+	dque.PushFront(tmp)
+	assert.Equal(t, tmp, dque.Back())
+	assert.Equal(t, tmp, dque.PopBack())
+
+	require.True(t, dque.Empty())
+
+	tmp = rand.Intn(1e9)
+	dque.PushBack(tmp)
+	assert.Equal(t, tmp, dque.Front())
+	assert.Equal(t, tmp, dque.PopFront())
+
+	require.True(t, dque.Empty())
 
 	l, r := 0, n
 	for l < r {
@@ -35,6 +50,10 @@ func TestDeque(t *testing.T) {
 		assert.Equal(t, samples[r%n], dque.Back())
 	}
 
+	for i := 0; i < n; i++ {
+		assert.Equal(t, samples[(l-1-i+n)%n], dque.At(i))
+	}
+
 	for r-l < n {
 		assert.Equal(t, samples[(l-1+n)%n], dque.Front())
 		assert.Equal(t, samples[r%n], dque.Back())
@@ -49,8 +68,6 @@ func TestDeque(t *testing.T) {
 
 		assert.Equal(t, n-(r-l), dque.Size())
 	}
-
-	assert.True(t, dque.Empty())
 }
 
 func TestDeque_Panic(t *testing.T) {
@@ -118,7 +135,7 @@ func BenchmarkDeque(b *testing.B) {
 		dque := NewDeque[int]()
 
 		for i := 0; i < loop; i++ {
-			if rand.Intn(2) == 1 {
+			if i%5%2 == 1 {
 				dque.PushBack(rand.Intn(1e9))
 			} else {
 				dque.PushFront(rand.Intn(1e9))
@@ -126,7 +143,7 @@ func BenchmarkDeque(b *testing.B) {
 		}
 
 		for i := 0; i < loop; i++ {
-			if rand.Intn(2) == 1 {
+			if i%7%2 == 1 {
 				dque.PopBack()
 			} else {
 				dque.PopFront()

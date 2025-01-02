@@ -7,7 +7,6 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
 
@@ -27,5 +26,5 @@ jobs:
     - name: Test
       run: go test -cover -v ./... -coverprofile=coverage.out
 
-    - name: Report the test coverage
+    - name: Run octocov
       uses: k1LoW/octocov-action@v1

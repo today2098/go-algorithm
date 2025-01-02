@@ -1,10 +1,14 @@
 # go-algorithm
 
-[![Go](https://github.com/today2098/go-algorithm/actions/workflows/go.yml/badge.svg)](https://github.com/today2098/go-algorithm/actions/workflows/go.yml)
-[![verify](https://github.com/today2098/go-algorithm/actions/workflows/verify.yml/badge.svg)](https://github.com/today2098/go-algorithm/actions/workflows/verify.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/today2098/go-algorithm)](https://goreportcard.com/report/github.com/today2098/go-algorithm)
 [![Go Reference](https://pkg.go.dev/badge/github.com/today2098/go-algorithm.svg)](https://pkg.go.dev/github.com/today2098/go-algorithm)
 [![GitHub Tag](https://img.shields.io/github/v/tag/today2098/go-algorithm)](https://github.com/today2098/go-algorithm/tags)
+
+[![Go](https://github.com/today2098/go-algorithm/actions/workflows/go.yml/badge.svg)](https://github.com/today2098/go-algorithm/actions/workflows/go.yml)
+![coverage](docs/coverage.svg)
+![coverage](docs/ratio.svg)
+![coverage](docs/time.svg)
+[![verify](https://github.com/today2098/go-algorithm/actions/workflows/verify.yml/badge.svg)](https://github.com/today2098/go-algorithm/actions/workflows/verify.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/today2098/go-algorithm)](https://goreportcard.com/report/github.com/today2098/go-algorithm)
 
 My library for competitive programming by Go.
 

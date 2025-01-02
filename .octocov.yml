@@ -9,14 +9,23 @@ codeToTestRatio:
     - '!**/*_test.go'
   test:
     - '**/*_test.go'
+  badge:
+    path: docs/ratio.svg
 testExecutionTime:
   if: true
-diff:
-  datastores:
-    - artifact://${GITHUB_REPOSITORY}
+  step:
+    - Build
+    - Test
+  badge:
+    path: docs/time.svg
 comment:
   if: is_pull_request
+summary:
+  if: true
 report:
   if: is_default_branch
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
+diff:
   datastores:
     - artifact://${GITHUB_REPOSITORY}

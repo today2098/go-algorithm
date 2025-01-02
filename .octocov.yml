@@ -1,23 +1,17 @@
 coverage:
   paths:
     - coverage.out
-  badge:
-    path: docs/coverage.svg
 codeToTestRatio:
   code:
     - '**/*.go'
     - '!**/*_test.go'
   test:
     - '**/*_test.go'
-  badge:
-    path: docs/ratio.svg
 testExecutionTime:
   if: true
   step:
     - Build
     - Test
-  badge:
-    path: docs/time.svg
 comment:
   if: is_pull_request
 summary:

@@ -25,4 +25,7 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -cover -v ./...
+      run: go test -cover -v ./... -coverprofile=coverage.out
+
+    - name: Report the test coverage
+      uses: k1LoW/octocov-action@v1

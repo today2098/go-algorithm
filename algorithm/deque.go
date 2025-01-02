@@ -3,14 +3,14 @@
 package algorithm
 
 type Deque[T any] struct {
-	front []T
-	back  []T
+	FrontStack []T
+	BackStack  []T
 }
 
 func NewDeque[T any]() *Deque[T] {
 	return &Deque[T]{
-		front: make([]T, 0),
-		back:  make([]T, 0),
+		FrontStack: make([]T, 0),
+		BackStack:  make([]T, 0),
 	}
 }
 
@@ -19,58 +19,58 @@ func (dq *Deque[T]) Empty() bool {
 }
 
 func (dq *Deque[T]) Size() int {
-	return len(dq.front) + len(dq.back)
+	return len(dq.FrontStack) + len(dq.BackStack)
 }
 
 func (dq *Deque[T]) Front() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	if len(dq.front) == 0 {
-		return dq.back[0]
+	if len(dq.FrontStack) == 0 {
+		return dq.BackStack[0]
 	}
-	return dq.front[len(dq.front)-1]
+	return dq.FrontStack[len(dq.FrontStack)-1]
 }
 
 func (dq *Deque[T]) Back() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	if len(dq.back) == 0 {
-		return dq.front[0]
+	if len(dq.BackStack) == 0 {
+		return dq.FrontStack[0]
 	}
-	return dq.back[len(dq.back)-1]
+	return dq.BackStack[len(dq.BackStack)-1]
 }
 
 func (dq *Deque[T]) At(i int) T {
 	if !dq.isValidIdx(i) {
 		panic("Deque: index out of range")
 	}
-	if i < len(dq.front) {
-		return dq.front[len(dq.front)-1-i]
+	if i < len(dq.FrontStack) {
+		return dq.FrontStack[len(dq.FrontStack)-1-i]
 	}
-	return dq.back[i-len(dq.front)]
+	return dq.BackStack[i-len(dq.FrontStack)]
 }
 
 func (dq *Deque[T]) PushFront(x T) {
-	dq.front = append(dq.front, x)
+	dq.FrontStack = append(dq.FrontStack, x)
 }
 
 func (dq *Deque[T]) PushBack(x T) {
-	dq.back = append(dq.back, x)
+	dq.BackStack = append(dq.BackStack, x)
 }
 
 func (dq *Deque[T]) PopFront() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	if len(dq.front) == 0 {
-		res := dq.back[0]
-		dq.back = dq.back[1:]
+	if len(dq.FrontStack) == 0 {
+		res := dq.BackStack[0]
+		dq.BackStack = dq.BackStack[1:]
 		return res
 	}
-	res := dq.front[len(dq.front)-1]
-	dq.front = dq.front[:len(dq.front)-1]
+	res := dq.FrontStack[len(dq.FrontStack)-1]
+	dq.FrontStack = dq.FrontStack[:len(dq.FrontStack)-1]
 	return res
 }
 
@@ -78,13 +78,13 @@ func (dq *Deque[T]) PopBack() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	if len(dq.back) == 0 {
-		res := dq.front[0]
-		dq.front = dq.front[1:]
+	if len(dq.BackStack) == 0 {
+		res := dq.FrontStack[0]
+		dq.FrontStack = dq.FrontStack[1:]
 		return res
 	}
-	res := dq.back[len(dq.back)-1]
-	dq.back = dq.back[:len(dq.back)-1]
+	res := dq.BackStack[len(dq.BackStack)-1]
+	dq.BackStack = dq.BackStack[:len(dq.BackStack)-1]
 	return res
 }
 

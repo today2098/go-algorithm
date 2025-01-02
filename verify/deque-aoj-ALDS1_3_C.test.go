@@ -26,13 +26,17 @@ func main() {
 		} else if cmd == "delete" {
 			x := io.GetInt()
 
-			node := dq.Data.Front()
-			for node != nil && node.Value.(int) != x {
-				node = node.Next()
+			for i := len(dq.FrontStack) - 1; i >= 0; i-- {
+				if dq.FrontStack[i] == x {
+					dq.FrontStack = append(dq.FrontStack[0:i], dq.FrontStack[i+1:len(dq.FrontStack)]...)
+					continue
+				}
 			}
-
-			if node != nil {
-				dq.Data.Remove(node)
+			for i := 0; i < len(dq.BackStack); i++ {
+				if dq.BackStack[i] == x {
+					dq.BackStack = append(dq.BackStack[0:i], dq.BackStack[i+1:len(dq.BackStack)]...)
+					continue
+				}
 			}
 		} else if cmd == "deleteFirst" {
 			dq.PopFront()
@@ -42,10 +46,8 @@ func main() {
 	}
 
 	ans := []any{}
-	node := dq.Data.Front()
-	for node != nil {
-		ans = append(ans, node.Value.(int))
-		node = node.Next()
+	for !dq.Empty() {
+		ans = append(ans, dq.PopFront())
 	}
 
 	io.Out(ans...)

@@ -29,15 +29,17 @@ func main() {
 			for i := len(dq.FrontStack) - 1; i >= 0; i-- {
 				if dq.FrontStack[i] == x {
 					dq.FrontStack = append(dq.FrontStack[0:i], dq.FrontStack[i+1:len(dq.FrontStack)]...)
-					continue
+					goto Next
 				}
 			}
 			for i := 0; i < len(dq.BackStack); i++ {
 				if dq.BackStack[i] == x {
 					dq.BackStack = append(dq.BackStack[0:i], dq.BackStack[i+1:len(dq.BackStack)]...)
-					continue
+					goto Next
 				}
 			}
+
+		Next:
 		} else if cmd == "deleteFirst" {
 			dq.PopFront()
 		} else {

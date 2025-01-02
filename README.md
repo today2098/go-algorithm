@@ -24,6 +24,7 @@ go get -u github.com/today2098/go-algorithm
 | --------------------------------------- | ------------------------------------------ | ------------------------------------- |
 | [Stack](./algorithm/stack.go)           | A data structure about simple stack (LIFO) | [stack.md](./docs/stack.md)           |
 | [Queue](./algorithm/queue.go)           | A data structure about simple queue (FIFO) | [queue.md](./docs/queue.md)           |
+| [Deque](./algorithm/deque.go)           | Double-ended queue                         | -                                     |
 | [BinaryHeap](./algorithm/binaryheap.go) | A data structure about priority queue      | [binaryheap.md](./docs/binaryheap.md) |
 | [UnionFind](./algorithm/unionfind.go)   | Disjoint-set data structure                | [unionfind.md](./docs/unionfind.md)   |
 

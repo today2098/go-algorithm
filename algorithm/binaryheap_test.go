@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestBinaryHeap(t *testing.T) {
@@ -42,6 +43,44 @@ func TestBinaryHeap(t *testing.T) {
 	}
 
 	assert.True(t, pque.Empty())
+}
+
+func TestBinaryHeap_Panic(t *testing.T) {
+	tests := []struct {
+		name    string
+		f       func(t *testing.T)
+		wantErr any
+	}{
+		{
+			name: "Top",
+			f: func(t *testing.T) {
+				pque := NewDefaultBinaryHeap[int]()
+				require.True(t, pque.Empty())
+				_ = pque.Top()
+			},
+			wantErr: "BinaryHeap: empty",
+		},
+		{
+			name: "Pop",
+			f: func(t *testing.T) {
+				pque := NewDefaultBinaryHeap[int]()
+				require.True(t, pque.Empty())
+				pque.Pop()
+			},
+			wantErr: "BinaryHeap: empty",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			defer func() {
+				err := recover()
+				assert.Equal(t, test.wantErr, err)
+			}()
+
+			test.f(t)
+		})
+	}
 }
 
 func BenchmarkBinaryHeap(b *testing.B) {

@@ -7,7 +7,7 @@ type Queue[T any] struct {
 	Data []T
 }
 
-// NewStack returns an initialized Queue.
+// NewQueue returns an initialized Queue.
 func NewQueue[T any]() *Queue[T] {
 	return &Queue[T]{
 		Data: []T{},
@@ -24,7 +24,7 @@ func (q *Queue[T]) Size() int {
 	return len(q.Data)
 }
 
-// Top returns the top element of the queue.
+// Front returns the front element of queue.
 func (q *Queue[T]) Front() T {
 	if q.Empty() {
 		panic("Queue: empty")
@@ -32,12 +32,12 @@ func (q *Queue[T]) Front() T {
 	return q.Data[0]
 }
 
-// Push adds the element x to the top of the queue.
+// Push adds the element x to the back of queue.
 func (q *Queue[T]) Push(x T) {
 	q.Data = append(q.Data, x)
 }
 
-// Pop removes and returns the top element of the queue.
+// Pop removes and returns the front element of queue.
 func (q *Queue[T]) Pop() T {
 	if q.Empty() {
 		panic("Queue: empty")

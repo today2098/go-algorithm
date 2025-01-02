@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestStack(t *testing.T) {
@@ -37,6 +38,44 @@ func TestStack(t *testing.T) {
 	}
 
 	assert.True(t, st.Empty())
+}
+
+func TestStack_Panic(t *testing.T) {
+	tests := []struct {
+		name    string
+		f       func(t *testing.T)
+		wantErr any
+	}{
+		{
+			name: "Top",
+			f: func(t *testing.T) {
+				st := NewStack[int]()
+				require.True(t, st.Empty())
+				_ = st.Top()
+			},
+			wantErr: "Stack: empty",
+		},
+		{
+			name: "Pop",
+			f: func(t *testing.T) {
+				st := NewStack[int]()
+				require.True(t, st.Empty())
+				st.Pop()
+			},
+			wantErr: "Stack: empty",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			defer func() {
+				err := recover()
+				assert.Equal(t, test.wantErr, err)
+			}()
+
+			test.f(t)
+		})
+	}
 }
 
 func BenchmarkStack(b *testing.B) {

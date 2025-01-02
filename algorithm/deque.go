@@ -2,15 +2,15 @@
 
 package algorithm
 
-import "container/list"
-
 type Deque[T any] struct {
-	Data *list.List
+	front []T
+	back  []T
 }
 
 func NewDeque[T any]() *Deque[T] {
 	return &Deque[T]{
-		Data: list.New(),
+		front: make([]T, 0),
+		back:  make([]T, 0),
 	}
 }
 
@@ -19,41 +19,61 @@ func (dq *Deque[T]) Empty() bool {
 }
 
 func (dq *Deque[T]) Size() int {
-	return dq.Data.Len()
+	return len(dq.front) + len(dq.back)
 }
 
 func (dq *Deque[T]) Front() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	return dq.Data.Front().Value.(T)
+	if len(dq.front) == 0 {
+		return dq.back[0]
+	}
+	return dq.front[len(dq.front)-1]
 }
 
 func (dq *Deque[T]) Back() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	return dq.Data.Back().Value.(T)
+	if len(dq.back) == 0 {
+		return dq.front[0]
+	}
+	return dq.back[len(dq.back)-1]
 }
 
 func (dq *Deque[T]) PushFront(x T) {
-	dq.Data.PushFront(x)
+	dq.front = append(dq.front, x)
 }
 
 func (dq *Deque[T]) PushBack(x T) {
-	dq.Data.PushBack(x)
+	dq.back = append(dq.back, x)
 }
 
 func (dq *Deque[T]) PopFront() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	return dq.Data.Remove(dq.Data.Front()).(T)
+	if len(dq.front) == 0 {
+		res := dq.back[0]
+		dq.back = dq.back[1:]
+		return res
+	}
+	res := dq.front[len(dq.front)-1]
+	dq.front = dq.front[:len(dq.front)-1]
+	return res
 }
 
 func (dq *Deque[T]) PopBack() T {
 	if dq.Empty() {
 		panic("Deque: empty")
 	}
-	return dq.Data.Remove(dq.Data.Back()).(T)
+	if len(dq.back) == 0 {
+		res := dq.front[0]
+		dq.front = dq.front[1:]
+		return res
+	}
+	res := dq.back[len(dq.back)-1]
+	dq.back = dq.back[:len(dq.back)-1]
+	return res
 }

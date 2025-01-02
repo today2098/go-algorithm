@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestQueue(t *testing.T) {
@@ -37,6 +38,44 @@ func TestQueue(t *testing.T) {
 	}
 
 	assert.True(t, que.Empty())
+}
+
+func TestQueue_Panic(t *testing.T) {
+	tests := []struct {
+		name    string
+		f       func(t *testing.T)
+		wantErr any
+	}{
+		{
+			name: "Front",
+			f: func(t *testing.T) {
+				que := NewQueue[int]()
+				require.True(t, que.Empty())
+				_ = que.Front()
+			},
+			wantErr: "Queue: empty",
+		},
+		{
+			name: "Pop",
+			f: func(t *testing.T) {
+				que := NewQueue[int]()
+				require.True(t, que.Empty())
+				que.Pop()
+			},
+			wantErr: "Queue: empty",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			defer func() {
+				err := recover()
+				assert.Equal(t, test.wantErr, err)
+			}()
+
+			test.f(t)
+		})
+	}
 }
 
 func BenchmarkQueue(b *testing.B) {

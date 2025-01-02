@@ -1,6 +1,8 @@
 coverage:
   paths:
     - coverage.out
+  badge:
+    path: docs/coverage.svg
 codeToTestRatio:
   code:
     - '**/*.go'
@@ -18,7 +20,3 @@ report:
   if: is_default_branch
   datastores:
     - artifact://${GITHUB_REPOSITORY}
-
-coverage:
-  badge:
-    path: docs/coverage.svg

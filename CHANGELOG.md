@@ -4,6 +4,7 @@
 
 - Create a new structure, `BinaryHeap` about priority queue [#5](https://github.com/today2098/go-algorithm/pull/5)
 - Create a new structure, `UnionFind` about disjoint-set data structure [#6](https://github.com/today2098/go-algorithm/pull/6)
+- Create a new structure, `Deque` about Double-ended queue [#7](https://github.com/today2098/go-algorithm/pull/7)
 
 
 ## [v0.0.1](https://github.com/today2098/go-algorithm/compare/84c1c73...v0.0.1) (2024/12/31)

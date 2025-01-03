@@ -29,7 +29,7 @@ go get -u github.com/today2098/go-algorithm
 | [UnionFind](./algorithm/unionfind.go)   | Disjoint-set data structure                | [unionfind.md](./docs/unionfind.md)   |
 
 
-### Graph
+### Graph algorithms
 
 | Name                                | Summary                                                                 | Doucument |
 | ----------------------------------- | ----------------------------------------------------------------------- | --------- |

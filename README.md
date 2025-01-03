@@ -29,6 +29,13 @@ go get -u github.com/today2098/go-algorithm
 | [UnionFind](./algorithm/unionfind.go)   | Disjoint-set data structure                | [unionfind.md](./docs/unionfind.md)   |
 
 
+### Graph algorithms
+
+| Name                                | Summary                                                                 | Doucument |
+| ----------------------------------- | ----------------------------------------------------------------------- | --------- |
+| [Dijkstra](./algorithm/dijkstra.go) | A helper structure to solve shortest path problem by Dijkstra algorithm | -         |
+
+
 ### Utilities
 
 | Name                | Summary                     | Doucument |

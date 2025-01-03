@@ -20,7 +20,7 @@ func NewBinaryHeap[T any](f BinaryHeapCompFunc[T]) *BinaryHeap[T] {
 }
 
 // NewDefaultBinaryHeap returns an initialized BinaryHeap.
-func NewDefaultBinaryHeap[T int | float64 | byte | rune | string]() *BinaryHeap[T] {
+func NewDefaultBinaryHeap[T int | int64 | float64 | byte | rune | string]() *BinaryHeap[T] {
 	return NewBinaryHeap(func(a, b T) bool {
 		return a > b
 	})

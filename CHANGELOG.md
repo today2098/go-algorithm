@@ -1,6 +1,11 @@
 # Changelog
 
-## [Unreleased](https://github.com/today2098/go-algorithm/compare/v0.0.2...HEAD)
+## [Unreleased](https://github.com/today2098/go-algorithm/compare/v0.0.3...HEAD)
+
+## [v0.0.3](https://github.com/today2098/go-algorithm/compare/v0.0.2...v0.0.3) (2025/01/03)
+
+- Create a new helper structure, `Dijkstra` to solves shortest path problem by Dijkstra algorithm [#11](https://github.com/today2098/go-algorithm/pull/11)
+
 
 ## [v0.0.2](https://github.com/today2098/go-algorithm/compare/v0.0.1...v0.0.2) (2025/01/02)
 

@@ -18,8 +18,8 @@ func newNaiveUnionFind(vn int) *naiveUnionFind {
 	for i := range flag {
 		flag[i] = make([]bool, vn)
 	}
-	for u := 0; u < vn; u++ {
-		flag[u][u] = true
+	for v := 0; v < vn; v++ {
+		flag[v][v] = true
 	}
 	return &naiveUnionFind{
 		vn:   vn,

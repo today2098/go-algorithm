@@ -3,6 +3,7 @@
 package algorithm
 
 import (
+	"container/heap"
 	"math/rand"
 	"sort"
 	"testing"
@@ -83,22 +84,61 @@ func TestBinaryHeap_Panic(t *testing.T) {
 	}
 }
 
+type intHeap []int
+
+func (h intHeap) Len() int           { return len(h) }
+func (h intHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h intHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *intHeap) Push(x any) {
+	*h = append(*h, x.(int))
+}
+
+func (h *intHeap) Pop() any {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
 func BenchmarkBinaryHeap(b *testing.B) {
-	loop := int(1e7)
-
-	b.ResetTimer()
-
-	for i := 0; i < b.N; i++ {
-		pque := NewDefaultBinaryHeap[int]()
-
-		for i := 0; i < loop; i++ {
-			pque.Push(rand.Intn(1e9))
-		}
-
-		for i := 0; i < loop; i++ {
-			pque.Pop()
-		}
+	loop := int(1e6)
+	samples := make([]int, loop)
+	for i := 0; i < loop; i++ {
+		samples[i] = rand.Intn(1e9)
 	}
 
-	b.ReportMetric(float64(b.N)/float64(b.Elapsed().Seconds()), "op/sec")
+	b.Run("Original", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			pque := NewDefaultBinaryHeap[int]()
+
+			for i := 0; i < loop; i++ {
+				pque.Push(samples[i])
+			}
+
+			for i := 0; i < loop; i++ {
+				pque.Pop()
+			}
+		}
+
+		b.ReportMetric(float64(b.N)/float64(b.Elapsed().Seconds()), "op/sec")
+	})
+
+	b.Run("Standard library", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			pque := &intHeap{}
+			heap.Init(pque)
+
+			for i := 0; i < loop; i++ {
+				heap.Push(pque, samples[i])
+			}
+
+			for i := 0; i < loop; i++ {
+				heap.Pop(pque)
+			}
+		}
+
+		b.ReportMetric(float64(b.N)/float64(b.Elapsed().Seconds()), "op/sec")
+	})
 }

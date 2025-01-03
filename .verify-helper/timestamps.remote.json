@@ -1,8 +1,8 @@
 {
-"verify/binaryheap-aoj-ALDS1_9_C.test.go": "2025-01-03 15:17:53 +0900",
-"verify/deque-aoj-ALDS1_3_C.test.go": "2025-01-03 15:17:53 +0900",
-"verify/dijkstra-aoj-GRL_1_A.test.go": "2025-01-03 15:17:53 +0900",
-"verify/queue-aoj-ALDS1_3_B.test.go": "2025-01-03 15:17:53 +0900",
-"verify/stack-aoj-ALDS1_3_A.test.go": "2025-01-03 15:17:53 +0900",
-"verify/unionfind-aoj-DSL_1_A.test.go": "2025-01-03 15:17:53 +0900"
+"verify/binaryheap-aoj-ALDS1_9_C.test.go": "2025-01-03 16:27:33 +0900",
+"verify/deque-aoj-ALDS1_3_C.test.go": "2025-01-03 16:27:33 +0900",
+"verify/dijkstra-aoj-GRL_1_A.test.go": "2025-01-03 16:27:33 +0900",
+"verify/queue-aoj-ALDS1_3_B.test.go": "2025-01-03 16:27:33 +0900",
+"verify/stack-aoj-ALDS1_3_A.test.go": "2025-01-03 16:27:33 +0900",
+"verify/unionfind-aoj-DSL_1_A.test.go": "2025-01-03 16:27:33 +0900"
 }
